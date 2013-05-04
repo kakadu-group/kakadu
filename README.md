@@ -6,6 +6,7 @@ the user so his learn success is as high as possible.
 
 Kakadu is bsed on the following open source project:
 - Laravel - A clean and classy framework for PHP web development
+- Sentry - A framework agnostic authentication & authorization system for Laravel
 - PHPExcel - A pure PHP library for reading and writing spreadsheet files
 - jQuery - A multi-browser JavaScript library designed to simplify the client-side scripting of HTML
 - Bootstrap -  A free collection of tools for creating websites and web applications
