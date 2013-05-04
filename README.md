@@ -1,9 +1,9 @@
 Kakadu - the free learn portal
 ======
 
-Kakadu is a PHP website, that focuses on learning. This project should support the user while learning an display the
-best questions for a better success
-
+Kakadu is a PHP website, that focuses on learning. The user can create learngroups, courses, catalogs and questions and 
+share them with other users. This project includes also an learnalgorithm that tries to select the best questions for 
+the user so his learn success is as high as possible.
 
 
 License
