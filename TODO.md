@@ -1,9 +1,9 @@
 ## ToDo
 
-- Change to Laravel 4
+- Change to Laravel 4 (and use the Laravel 4 Mailer)
 - Change to Sentry 2
 - Administration area
+- Adding learning matter
 - Better integration of PHPExcel
-- Use the Laravel 4 Mailer
 - Better RESTful API
 - More client-side JavaScript and Ajax requests
