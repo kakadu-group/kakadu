@@ -1,0 +1,373 @@
+<html lang="de"><head>
+        <meta charset="UTF-8">
+        <title>Kakadu</title>
+
+        <script src="http://localhost/kakadu/kakadu/public/js/jquery-1.8.2.js"></script>
+<script src="http://localhost/kakadu/kakadu/public/js/underscore-min.js"></script>
+<script src="http://localhost/kakadu/kakadu/public/js/backbone-min.js"></script>
+<script src="http://localhost/kakadu/kakadu/public/js/bootstrap.js"></script>
+<script src="http://localhost/kakadu/kakadu/public/js/bootbox.js"></script>
+<script src="http://localhost/kakadu/kakadu/public/js/jquery-ui-1.10.0.js"></script>
+<script src="http://localhost/kakadu/kakadu/public/js/sidebar.js"></script>
+<script src="http://localhost/kakadu/kakadu/public/js/cutString.js"></script>
+
+        <link href="http://localhost/kakadu/kakadu/public/css/bootstrap.css" media="all" type="text/css" rel="stylesheet">
+ 
+        <link href="http://localhost/kakadu/kakadu/public/css/font-awesome.css" media="all" type="text/css" rel="stylesheet">
+         
+<script>
+
+   //Shows the error messages
+    function error(message){                
+        bootbox.alert(message);
+     }
+
+    //Hides/show the inline edit fields
+    function edit(){
+    	$('#view').toggle();
+    	$('#edit').toggle();
+    }
+
+    $(document).ready(function() {
+        $('.dropdown-toggle').dropdown();
+
+        //Hides all inline edit-fields
+    	$('#edit').hide();
+    });
+
+    
+</script></head>
+
+
+
+<body>
+ <div id="wrap">
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container-fluid">
+                <a href="http://localhost/kakadu/kakadu/public/" class="brand">Kakadu</a>
+                <ul class="nav">            
+                    <li id="quiz"><a href="http://localhost/kakadu/kakadu/public/course/1/learning">1. Quiz</a></li>
+                    <li id="courses"><a href="http://localhost/kakadu/kakadu/public/courses">Courses</a></li>
+                    <li id="groups"><a href="http://localhost/kakadu/kakadu/public/groups">Groups</a></li>
+                    <form class="navbar-search" method="POST" action="http://localhost/kakadu/kakadu/public/courses/search" accept-charset="UTF-8">                        <input class="input-medium search-query" type="search" name="search" value="Search">                        <input type="hidden" name="csrf_token" value="xaKDYFqzCd2QNnTI8BucOsD0snpmtVj7i47gZKkh">                        <input class="btn btn-small" type="submit" value="Search">                    </form>                    
+                </ul>
+
+                                
+                <ul class="nav pull-right" id="dropdown">
+                    <li class="dropdown" id="accountmenu">  
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><u id="userinfo">Admin</u> <i class="icon-cog"></i><b class="caret"></b></a>
+                        <ul class="dropdown-menu">  
+                            <li><a href="http://localhost/kakadu/kakadu/public/profile/edit">Edit profile</a></li>  
+                            <li class="divider"></li>  
+                            <li><a href="http://localhost/kakadu/kakadu/public/auth/logout">Logout</a></li>  
+                         </ul>  
+                     </li> 
+                </ul>
+
+                                    
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row-fluid row">
+            <div id="content" class="span9">
+<script src="http://localhost/kakadu/kakadu/public/js/addUser.js"></script>
+
+<!--Hides the edit field if no user is logged in-->
+ 
+
+
+<script>
+
+	//Counter for members in group
+	$count = 0;
+
+	//Initialise the JavaScript File with the base url and the groupId.
+	//Function can be found in add_user.js
+	initialise("http://localhost/kakadu/kakadu/public", "1", "Drag here to add the user");
+
+	$(document).ready(function(){
+		$('#number').text($count++);
+		$('#notfound').hide();
+		$('#table').hide();
+		$('#alreadyInGroup').hide();
+		$('#userDeleted').hide();
+		$('#user_added').hide();
+		$('#groupInfo').hide();
+		$('#notDeleted').hide();
+		$('#dragGoal').hide();
+		$('#admin_added').hide();
+		$('#admin_not_added').hide();
+		$('#admin_not_deleted').hide();
+
+		//fade the info field in and out
+		$("#showInfo").click(function(){	
+			if($("#groupInfo").is(":visible")){
+				$("#groupInfo").slideUp();
+				$("#showInfo").html("Show Info <i class='icon-chevron-down icon-white'></i>");
+			}else{
+				$("#groupInfo").slideDown();
+				$("#showInfo").html("Hide Info <i class='icon-chevron-up icon-white'></i>");
+			}
+		});
+
+		//Hides the alerts when clicking close
+		$('.alert .close').live('click',function(){
+			$(this).parent().hide();
+			return false;
+		});
+
+	});
+
+	
+	//Hides the updated label if the catalog was never updated
+	function hide(){
+		$(document).ready(function(){
+			$('#updated').hide();
+		}); 	
+	}
+
+	//function which is called on delete
+	function deletegroup(){
+		bootbox.dialog("Do you really want to delete this group", [{
+
+			"label" : "No",
+			"class" : "btn-danger",
+			"callback": function() {
+				console.log("No delete");
+			}
+
+			}, {
+			"label" : "Yes",
+			"class" : "btn-success",
+			"callback": function() {
+				var urldelete = "http://localhost/kakadu/kakadu/public/group/1/delete";
+				window.location=urldelete;
+			}
+
+			}]);
+	}
+
+</script>
+
+<!-- Check if the group was ever updated -->
+	<script>hide();</script>
+
+<div class="row-fluid">
+	<div class="offset1">
+		<div class="span12">
+			<div id="view">
+				<legend>
+					Group 1											<a onclick="edit();" class="pull-right" title="Edit"><i class="icon-edit"></i></a>
+									</legend>
+				<p>This is the description of group 1. It has to be very long.</p>
+			</div>
+				
+				<div id="edit" style="display: none;">
+					<form method="POST" action="http://localhost/kakadu/kakadu/public/group/edit" accept-charset="UTF-8">	
+						<input type="hidden" name="id" value="1">		
+						<legend>
+							<input type="text" name="name" value="Group 1">							<div class="btn-group pull-right">
+								<button class="btn" type="submit" name="change_group" onclick="$(group/edit).submit()">Save changes</button>
+								<button class="btn" onclick="edit();return false;">Abort</button>
+							</div>
+						</legend>					
+						<textarea class="row-fluid" rows="6" name="description" cols="50">This is the description of group 1. It has to be very long.</textarea>					
+						<input type="hidden" name="csrf_token" value="xaKDYFqzCd2QNnTI8BucOsD0snpmtVj7i47gZKkh">				
+					</form>				</div>
+						<div id="groupInfo" style="display: block;">
+				<div class="row-fluid">
+						<div class="span12">
+							<legend><h5>Info</h5></legend>
+						</div>
+				</div>
+				<div class="row-fluid">
+					<div class="span6">
+						<label><font size="2">Members:  <text id="number">2</text></font></label>
+						<label>
+							<font size="2">
+								<p><strong>Admins:</strong></p><p>
+								</p><div id="admin_not_deleted" class="alert alert-block alert-error fade in" style="display: none;">
+									<a class="close" href="#">×</a>
+									<h5>You can`t remove last admin</h5>
+								</div>
+								<table class="table table-hover table-condensed">
+									<thead>
+										<tr><th>Username</th>
+										<th>Email</th>
+										<th>Remove admin</th>
+									</tr></thead>
+									<tbody id="adminTable">
+																													<tr class="admin0">
+												<td>Admin</td>
+												<td>admin@example.com</td>
+												<td>
+													<button id="admin0" onclick="removeAdmin('admin@example.com',0);return false;" class="btn-danger btn-mini" title="Remove admin"><i class="icon-remove icon-white"></i></button>
+												</td>
+											</tr>
+																															<tr class="admin1">
+												<td>User2</td>
+												<td>user2@example.com</td>
+												<td>
+													<button id="admin1" onclick="removeAdmin('user2@example.com',1);return false;" class="btn-danger btn-mini" title="Remove admin"><i class="icon-remove icon-white"></i></button>
+												</td>
+											</tr>
+																													</tbody>
+								</table>
+							</font>
+						</label>
+					</div>
+					<div class="span6">
+						<label><font size="2">Created at:  2013-02-13 09:19:37</font></label>
+						<label id="updated" style="display: none;"><font size="2">Updated on:  2013-02-13 09:19:37</font></label>	
+					</div>
+				</div>	
+			</div>
+			<button class="btn btn-primary btn-mini pull-right" id="showInfo">Hide Info <i class="icon-chevron-up icon-white"></i></button>	
+		</div>
+	</div>
+</div>
+<div class="row-fluid">
+	<div class="offset1">
+		<div class="span12">
+			<br><legend>Members</legend>
+		</div>
+	</div>
+</div>
+<div class="row-fluid">
+	<div class="offset1">
+		<div class="span12">
+			<div id="membersList" class="span6">
+				<div id="userDeleted" class="alert alert-block alert-error fade in" style="display: none;">
+					<a class="close" href="#">×</a>
+					<h5>User was deleted from group</h5>
+				</div>
+				<div id="notDeleted" class="alert alert-block alert-error fade in" style="display: none;">
+					<a class="close" href="#">×</a>
+					<h5>User can`t be deleted</h5>
+				</div>
+				<div id="members">					
+					<table class="table table-hover table-condensed">
+	<thead>
+		<tr><th>Username</th>
+		<th>Email</th>
+					<th>Delete user</th>
+			</tr></thead>
+	<tbody>
+		<tr id="dragGoal" ondragover="allowDrop(event)" ondrop="drop(event)" style="display: none;">
+			<td></td>
+			<td><h3>Drag here to add the user</h3></td>
+			<td></td>
+		</tr>
+		<!-- For loop over all members of the group -->
+						<tr>
+			<td class="0">Admin</td>
+			<td class="0">admin@example.com</td>
+							<td class="0">
+					<button id="button" onclick="deleteUser('admin@example.com', 0);return false;" class="btn-danger" title="Delete user">
+						<i class="icon-remove icon-white"></i>
+					</button>
+				</td>
+					</tr>
+				<script>$count++;</script>
+				<tr>
+			<td class="1">User2</td>
+			<td class="1">user2@example.com</td>
+							<td class="1">
+					<button id="button" onclick="deleteUser('user2@example.com', 1);return false;" class="btn-danger" title="Delete user">
+						<i class="icon-remove icon-white"></i>
+					</button>
+				</td>
+					</tr>
+				<script>$count++;</script>
+			</tbody>
+</table>
+				</div>
+			</div>
+							<div class="span5">
+					<label><strong>Add user</strong></label>
+					<input id="search" type="text" placeholder="Search">
+					<div id="notfound" class="alert alert-block alert-error fade in" style="display: none;">
+						<a class="close" href="#">×</a>
+						<h5>No user found</h5>
+					</div>
+					<div id="alreadyInGroup" class="alert alert-block alert-error fade in" style="display: none;">
+						<a class="close" href="#">×</a>
+						<h5>User is already in group</h5>
+					</div>
+					<div id="user_added" class="alert alert-block alert-success fade in" style="display: none;">
+						<a class="close" href="#">×</a>
+						<h5>User was added to group</h5>
+					</div>
+					<div id="admin_added" class="alert alert-block alert-success fade in" style="display: none;">
+						<a class="close" href="#">×</a>
+						<h5>User was added as admin</h5>
+					</div>
+					<div id="admin_not_added" class="alert alert-block alert-error fade in" style="display: none;">
+						<a class="close" href="#">×</a>
+						<h5>User can`t be added as admin</h5>
+					</div>
+					<table id="users" class="table table-hover table-condensed">
+						<thead>
+							<tr><th>Username</th>
+							<th>Email</th>
+							<th>Add user</th>
+							<th>Add as Admin</th>
+							<th>Invite</th>
+						</tr></thead>
+						<tbody id="user_search">
+						
+						</tbody>
+					</table>
+					
+				</div>
+					</div>
+	</div>	
+</div>
+
+</div>
+            <div class="span3">
+                <div id="sidebar" class="well sidebar-nav-fixed">
+                    <ul class="nav nav-list">
+                        <div id="hide-sidebar" class="span1" style="position: relative; opacity: 0;">
+                            <a><i style="position: absolute; bottom: 2em; right: 2em;" class="icon-chevron-right"></i></a>
+                            <a><i style="position: absolute; bottom: 2em; right: 3em;" class="icon-chevron-right"></i></a>
+                            <a><i style="position: absolute; bottom: 2em; right: 1em;" class="icon-chevron-right"></i></a>
+                        </div>
+
+                        
+                        <div id="user">
+                            <div class="span11">
+                            	<li class="nav-header">Groups</li>
+	<li id="create"><a href="http://localhost/kakadu/kakadu/public/group/create">Create group</a></li>
+			<li id="create"><a href="http://localhost/kakadu/kakadu/public/group/1/edit">Edit group</a></li>
+		<li><a href="#" onclick="deletegroup()">Delete group <i class="icon-trash"></i></a></li>
+		
+	<li class="nav-header">Courses</li>
+	<li id="create"><a href="http://localhost/kakadu/kakadu/public/course/create">Create course</a></li>
+
+                            <li class="nav-header">Your profile</li>
+                            <li><a href="http://localhost/kakadu/kakadu/public/profile/edit">Edit profile</a> <i class="icon-user"></i></li>
+                            <li><a href="http://localhost/kakadu/kakadu/public/auth/logout">Logout</a></li>
+                            </div>      
+                        </div> 
+
+                                             
+                    </ul>
+                </div>
+            </div>
+            <div id="show-sidebar" class="span1" style="display: none;">
+                <a><i style="position: absolute; bottom: 58%; right: 1%;" class="icon-chevron-left"></i></a>
+                <a><i style="position: absolute; bottom: 56%; right: 1%;" class="icon-chevron-left"></i></a>
+                <a><i style="position: absolute; bottom: 54%; right: 1%;" class="icon-chevron-left"></i></a>
+                <a><i style="position: absolute; bottom: 52%; right: 1%;" class="icon-chevron-left"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <!-- Error handling of login-, register-, forgotpassword, and edit_profile-form -->
+    
+</body></html>
