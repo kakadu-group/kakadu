@@ -2,11 +2,10 @@
 
 [![Build Status](https://travis-ci.org/kakadu-group/kakadu.png?branch=develop)](https://travis-ci.org/kakadu-group/kakadu)
 
-Kakadu is a PHP website, that focuses on learning. The user can create learngroups, courses, catalogs and questions and 
-share them with other users. This project includes also an learnalgorithm, that tries to select the best questions for 
-the user so his learn success is as high as possible.
+Kakadu is a PHP website that focuses on learning. Users can create learngroups, courses, catalogs and questions and 
+share them with other users. The project features a learning algorithm which aims at selecting the best questions for the user such that the learning success is as high as possible.
 
-Kakadu is bsed on the following open source project:
+Kakadu is based on the following open source projects:
 - Laravel - A clean and classy framework for PHP web development
 - Sentry - A framework agnostic authentication & authorization system for Laravel
 - PHPExcel - A pure PHP library for reading and writing spreadsheet files
