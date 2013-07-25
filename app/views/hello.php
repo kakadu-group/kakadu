@@ -11,13 +11,6 @@
         <meta name="viewport" content="width=device-width">
 
         <link rel="stylesheet" href="css/bootstrap.min.css">
-        <style>
-            body {
-                padding-top: 60px;
-                padding-bottom: 40px;
-            }
-        </style>
-        <link rel="stylesheet" href="css/bootstrap-responsive.min.css">
         <link rel="stylesheet" href="css/main.css">
     </head>
     <body>
@@ -37,14 +30,18 @@
                     <div class="nav-collapse collapse">
                         <ul class="nav">
                             <li class="active"><a href="#">Home</a></li>
-                            <li><a href="#about">About</a></li>
+                            <li><a href="#">Favorites</a></li>
                         </ul>
+
+                        <form class="navbar-search">
+                            <input type="text" class="search-query" placeholder="Search">
+                        </form>
 
                         <ul class="nav pull-right">
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">alexlanz <b class="caret"></b></a>
+                                <a href="#" class="dropdown-toggle opacity" data-toggle="dropdown"><i class="icon-user icon-white"></i> alexlanz <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">Settings</a></li>
+                                    <li><a href="#">My Profile</a></li>
                                     <li><a href="#">Logout</a></li>
                                 </ul>
                             </li>
@@ -85,7 +82,7 @@
             <hr>
 
             <footer>
-                <p>&copy; Company 2012</p>
+                <p>&copy; Alex Lanz - krumer.it</p>
             </footer>
 
         </div> <!-- /container -->

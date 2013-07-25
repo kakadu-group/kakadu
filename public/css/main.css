@@ -1,0 +1,43 @@
+/*
+ * Tablets and Phones
+ */
+@media (max-width: 767px) {
+    body {
+        padding-bottom: 10px;
+    }
+
+    .opacity > i {
+        opacity: 0.5;
+    }
+}
+
+
+/*
+ * Desktops
+ */
+@media (min-width: 768px) {
+    body {
+        padding-top: 60px;
+        padding-bottom: 10px;
+    }
+
+    .opacity > i {
+        opacity: 0.5;
+    }
+
+    .opacity:hover > i {
+        opacity: 1;
+    }
+
+    .opacity:focus > i {
+        opacity: 1;
+    }
+}
+
+
+/*
+ * General
+ */
+.open > .opacity > i {
+    opacity: 1;
+}
