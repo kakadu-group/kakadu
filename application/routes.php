@@ -5,13 +5,13 @@
  */
 
 //Install
-// Route::get('install', array('as' => 'install', 'uses' => 'install@index'));
-// Route::post('install', array('uses' => 'install@install'));
-// Route::get('install/finished', array('as' => 'install/finished', 'uses' => 'install@finished'));
-// Route::any('(.*)', function() {
-//     return Redirect::to_route('install');
-// });
-// return;
+Route::get('install', array('as' => 'install', 'uses' => 'install@index'));
+Route::post('install', array('uses' => 'install@install'));
+Route::get('install/finished', array('as' => 'install/finished', 'uses' => 'install@finished'));
+Route::any('(.*)', function() {
+    return Redirect::to_route('install');
+});
+return;
 
 
 //Home

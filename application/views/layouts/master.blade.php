@@ -73,16 +73,15 @@
 	                @if($roleSystem != Const_Role::GUEST)
 	                  	<li id="favorites">{{ HTML::link_to_route('favorites', __('home.favorites'))}}</li>
 	                @endif
-	                <li class="divider-vertical"></li>
-	                    
-	                {{ Form::open('courses/search', 'GET', array('class' => 'navbar-search')) }}
-	                	<div class="input-append">
-	                    	{{Form::search('search', Input::get('search'))}}
-	                        {{Form::token()}}
-							<button class="btn" type="submit">{{__('home.search_placeholder')}}</button>
-						</div>
-					{{ Form::close() }}                    
-	            </ul>                
+	                <li class="divider-vertical"></li>              
+	            </ul>
+	            
+	            {{ Form::open('courses/search', 'GET', array('class' => 'navbar-form pull-left')) }}
+	                {{Form::search('search', Input::get('search'))}}
+	                {{Form::token()}}
+					<button class="btn" type="submit">{{__('home.search_placeholder')}}</button>
+				</form>
+				{{ Form::close() }}                 
 	               	
 	            <ul class="nav pull-right" id="dropdown">
 	              	<li id="help">{{ HTML::link_to_route('help', __('home.help_link'), array('class'=>'pull-right'))}}</li>
@@ -189,7 +188,7 @@
 				@if($roleSystem !== Const_Role::GUEST)
 					<br>
 				@endif
-				Version 0.1 of Kakadu 
+				Version 1.0 of Kakadu 
 				<a href="http://uibk.ac.at/">Universit&auml;t Innsbruck</a> - <a href="http://informatik.uibk.ac.at/">Institut f&uuml;r Informatik</a> - <a href="http://dbis-informatik.uibk.ac.at/">Databases and Information Systems</a>       		
 		    </p>
 		    </div>
