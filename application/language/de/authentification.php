@@ -6,7 +6,7 @@ return array(
 'email_or_password_not_correct' 	=> 'Email oder Passwort ist nicht korrekt',
 'registration_faild' 				=> 'Registrierung fehlgeschlagen',
 'activation_subject'				=> 'Account Aktivierung',
-'activation_message'				=> '&Ouml;ffnen Sie den folgenden Link, um ihr Account zu aktivieren: ',
+'activation_message'				=> '&Ouml;ffnen Sie den folgenden Link, um ihren Account zu aktivieren: ',
 'activation_success'				=> 'Ihr Account wurde erfolgreich aktiviert. Sie können sich nun anmelden.',
 'activation_faild'					=> 'Aktivierung fehlgeschlagen',
 'password_reset_subject'			=> 'Passwort wurde zurückgesetzt',
